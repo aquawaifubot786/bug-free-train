@@ -1,0 +1,16 @@
+# 🤖 WAIFU BOT - ENVIRONMENT VARIABLES
+# Copy this file to .env and fill in your values
+
+# Telegram Bot Token (get from @BotFather)
+TELEGRAM_BOT_TOKEN=8365459336:AAG2pS3tJUtO0vGr0iFHu0EtY7NNsUhAjLg
+
+# PostgreSQL Database URL (Neon)
+DATABASE_URL=postgresql://user:password@host/database
+
+# Owner ID (Your Telegram User ID)
+OWNER_ID=6245574035
+
+# Node Environment
+NODE_ENV=production
+# Port (for health checks)
+PORT=3030
