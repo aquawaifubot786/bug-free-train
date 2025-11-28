@@ -1,0 +1,38 @@
+name: 🤖 Bot Keep-Alive 24/7
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
+
+concurrency:
+  group: bot-keeper
+  cancel-in-progress: false
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci --legacy-peer-deps
+
+      - name: 🚀 Start Bot (Keep Alive 24/7)
+        env:
+          TELEGRAM_BOT_TOKEN: 8365459336:AAG2pS3tJUtO0vGr0iFHu0EtY7NNsUhAjLg
+          PORT: 3030
+          OWNER_ID: 6245574035
+        run: |
+          echo "🤖 Starting Waifu Bot on GitHub Actions..."
+          timeout 340m node bot.js || true
